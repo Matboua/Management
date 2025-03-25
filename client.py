@@ -49,7 +49,7 @@ class Afficher_Client():
         self.frame.pack(fill=BOTH, expand=True)
 
     def fill_tv(self):
-        con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+        con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
         cur = con.cursor()
         cur.execute('SELECT client_id, name_client, phone, email FROM client')
         data = cur.fetchall()
@@ -70,7 +70,7 @@ class Afficher_Client():
         client_name = self.treeview_client.item(selected_item)['values'][1]
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
 
             cur.execute("DELETE FROM vente WHERE name_client = %s", (client_name,))
@@ -101,7 +101,7 @@ class Afficher_Client():
         column_name = column_map[search_option]
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             query = f"SELECT client_id, name_client, phone, email FROM client WHERE {column_name} LIKE %s"
             cur.execute(query, ('%' + search_value + '%',))
@@ -210,7 +210,7 @@ class Update_Client():
         email = self.email.get().strip()
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             cur.execute("""
                 UPDATE client
@@ -276,7 +276,7 @@ class Ajouter_Client():
 
     def add_to_database(self, nom_client, email_client, telephone_client):
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
 
             cur.execute("""

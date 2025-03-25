@@ -59,7 +59,7 @@ class Afficher_Article():
 
 
     def fill_tv(self):
-        con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+        con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
         cur = con.cursor()
         cur.execute('SELECT * FROM article')
         data = cur.fetchall()
@@ -74,7 +74,7 @@ class Afficher_Article():
         if val_category == "All":
             self.fill_tv()
             return
-        con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+        con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
         cur = con.cursor()
         cur.execute(f"SELECT * FROM article WHERE category='{val_category}'")
         data = cur.fetchall()
@@ -95,7 +95,7 @@ class Afficher_Article():
 
         try:
             # Connect to the database
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
 
             # Check for dependent records in vente table
@@ -129,7 +129,7 @@ class Afficher_Article():
         selected_category = self.category.get()
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
 
             if selected_category == "All":
@@ -231,7 +231,7 @@ class Update_Article():
         category = self.category.get()
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             cur.execute("UPDATE article SET name_article = %s, category = %s, price = %s WHERE article_id = %s",
                         (nom_articl, category, prix_articl, self.article_id))
@@ -309,7 +309,7 @@ class Ajouter_Article():
         category = self.category.get()
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             cur.execute("INSERT INTO article (name_article, category, price) VALUES (%s, %s, %s)",
                         (nom_articl, category, prix_articl))

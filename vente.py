@@ -56,7 +56,7 @@ class Afficher_Ventes():
         self.frame.pack(fill=BOTH, expand=True)
 
     def fill_tv(self):
-        con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+        con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
         cur = con.cursor()
         cur.execute('SELECT vente_id, name_article, name_client, quantity, sale_date, total_price FROM vente')
         data = cur.fetchall()
@@ -75,7 +75,7 @@ class Afficher_Ventes():
         vente_id = self.treeview_vente.item(selected_item)['values'][0]
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
 
             cur.execute("DELETE FROM vente WHERE vente_id = %s", (vente_id,))
@@ -103,7 +103,7 @@ class Afficher_Ventes():
         column_name = column_map[search_option]
 
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             query = f"""
                 SELECT vente_id, name_article, name_client, quantity, sale_date, total_price 
@@ -204,7 +204,7 @@ class Update_Vente():
 
     def get_article_names(self):
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             cur.execute("SELECT name_article FROM article")
             articles = cur.fetchall()
@@ -287,7 +287,7 @@ class Update_Vente():
 
         try:
             # Connect to the database
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
 
             # Fetch the price of the selected article
@@ -373,7 +373,7 @@ class Ajouter_Ventes():
 
     def get_article_names(self):
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             cur.execute("SELECT name_article FROM article")
             articles = cur.fetchall()
@@ -385,7 +385,7 @@ class Ajouter_Ventes():
 
     def get_client_names(self):
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
             cur.execute("SELECT name_client FROM client")
             clients = cur.fetchall()
@@ -413,7 +413,7 @@ class Ajouter_Ventes():
 
     def add_to_database(self, name_article, name_client, quantity, sale_date):
         try:
-            con = mysql.connector.connect(host='localhost', database='article', user='root', password='0000')
+            con = mysql.connector.connect(host='localhost', database='article', user='root', password='')
             cur = con.cursor()
 
             # Check if the article exists
